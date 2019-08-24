@@ -7,8 +7,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   def generate_api_key
-    self.api_key = TokenGenerationService.generate if self.api_key.blank?
-    save
+    if self.api_key.blank?
+      self.api_key = TokenGenerationService.generate 
+      save
+    end
+    self.api_key
   end
 
   def destroy_api_key
