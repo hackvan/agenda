@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_184310) do
+ActiveRecord::Schema.define(version: 2019_08_24_202129) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "phone"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "social_networks", force: :cascade do |t|
+    t.string "type"
+    t.string "url"
+    t.string "number"
+    t.integer "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_social_networks_on_contact_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

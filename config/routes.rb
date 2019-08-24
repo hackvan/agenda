@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get  'users/sign_out' => 'sessions#destroy'
       get  'profile'        => 'users#show'
       put  'profile'        => 'users#update'
+      get  'contacts'       => 'contacts#index'
+      post 'contacts'       => 'contacts#create'
     end
   end
 end
