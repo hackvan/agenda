@@ -15,7 +15,7 @@ RSpec::describe "Posts", type: :request do
       end
       context "payload" do
         subject { response.body }
-        it { is_expected.to include("name", "email", "address", "phone", "password_digest") }
+        it { is_expected.to include("name", "email", "address", "phone", "id", "photo_url") }
       end
     end
 
