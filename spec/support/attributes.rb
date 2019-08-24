@@ -8,3 +8,10 @@ def user_attributes(overrides = {})
     password_confirmation: "secret"
   }.merge(overrides)
 end
+
+def login_attributes(overrides = {})
+  {
+    email: user_attributes[:email],
+    password: user_attributes[:password],
+  }.merge(overrides)
+end
