@@ -20,3 +20,5 @@
 .byebug_history
 .ruby-version
 .ruby-gemset
+.DS_Store
+/coverage/*

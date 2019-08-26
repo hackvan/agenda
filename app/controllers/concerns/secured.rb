@@ -3,10 +3,7 @@ module Secured
     headers = request.headers
     if headers['ApiKeyAuth'].present?
       token = headers['ApiKeyAuth']
-      p token
-      p User.find_by_api_key(token)
       if @user = User.find_by_api_key(token)
-        p @user
         return 
       end
     end

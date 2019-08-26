@@ -15,13 +15,16 @@ class Api::V1::ContactsController < ApplicationController
 
   private
   def contact_params
+    # To Do: Fix implementation for use social_network key instead social_network_attributes
+    # url: https://stackoverflow.com/questions/46853637/rails-5-1-api-how-to-permit-params-for-nested-json-objects-attributes
+    params[:contact][:social_networks_attributes] = params[:contact].delete(:social_networks) if params[:contact][:social_networks]
     params.require(:contact)
       .permit(
         :name,
         :email,
         :address,
         :phone,
-        # social_networks: [ :type, :url, :number ]
+        social_networks_attributes: [ :type, :url, :number, :id ]
       )
   end
 end

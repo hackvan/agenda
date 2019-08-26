@@ -1,5 +1,7 @@
 class SocialNetwork < ApplicationRecord
-  validates :type, presence:true
-  
+  self.inheritance_column = nil
+  validates :type, presence: true
+
   belongs_to :contact
+  validates_presence_of :contact
 end
