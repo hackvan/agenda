@@ -10,14 +10,12 @@ class User < ApplicationRecord
 
   def generate_api_key
     if self.api_key.blank?
-      self.api_key = TokenGenerationService.generate 
-      save
+      self.api_key = TokenGenerationService.generate
     end
-    self.api_key
+    api_key
   end
 
   def destroy_api_key
     self.api_key = nil
-    save
   end
 end

@@ -3,15 +3,13 @@ module Secured
     headers = request.headers
     if headers['ApiKeyAuth'].present?
       token = headers['ApiKeyAuth']
-      if @user = User.find_by_api_key(token)
-        return 
-      end
+      return if (@user = User.find_by_api_key(token))
     end
 
-    render json: { 
+    render json: {
       status: 401,
       errors: [
-        { detail: "No autorizado" }
+        { detail: 'No autorizado' }
       ]
     }, status: :unauthorized
   end

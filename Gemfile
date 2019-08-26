@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -23,10 +25,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS),
+# making cross-origin AJAX possible
 # gem 'rack-cors'
-gem 'simplecov', require: false, group: :test
 gem 'rubocop', require: false
+gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

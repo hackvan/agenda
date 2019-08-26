@@ -5,9 +5,14 @@ RSpec::describe "Profiles", type: :request do
 
     context "with valid credentials" do
       
-      let!(:user) { User.create(user_attributes(email: "another@gmail.com")) }
+      let!(:user) do 
+        user = User.create(user_attributes(email: "another@gmail.com"))
+        user.generate_api_key
+        user.save
+        user
+      end
 
-      let!(:auth_headers) { { 'ApiKeyAuth' => user.generate_api_key } }
+      let!(:auth_headers) { { 'ApiKeyAuth' => user.api_key } }
 
       before { get "/api/v1/profile", headers: auth_headers }
       
